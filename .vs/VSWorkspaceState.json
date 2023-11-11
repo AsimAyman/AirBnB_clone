@@ -1,0 +1,16 @@
+{
+  "ExpandedNodes": [
+    "",
+    "\\api\\v1",
+    "\\api\\v1\\views",
+    "\\api\\v1\\views\\documentation\\place",
+    "\\api\\v1\\views\\documentation\\place_amenity",
+    "\\api\\v1\\views\\documentation\\reviews",
+    "\\models\\engine",
+    "\\tests",
+    "\\tests\\test_models",
+    "\\tests\\test_models\\test_engine"
+  ],
+  "SelectedNode": "\\README.md",
+  "PreviewInSolutionExplorer": false
+}
