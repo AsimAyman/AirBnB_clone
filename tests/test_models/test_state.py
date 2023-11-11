@@ -23,15 +23,15 @@ class TestStateDocs(unittest.TestCase):
     def test_pep8_conformance_state(self):
         """Test that models/state.py conforms to PEP8."""
         pep8s = pep8.StyleGuide(quiet=True)
-        rs = pep8s.check_files(['models/state.py'])
-        self.assertEqual(rs.total_errors, 0,
+        result = pep8s.check_files(['models/state.py'])
+        self.assertEqual(result.total_errors, 0,
                          "Found code style errors (and warnings).")
 
     def test_pep8_conformance_test_state(self):
         """Test that tests/test_models/test_state.py conforms to PEP8."""
         pep8s = pep8.StyleGuide(quiet=True)
-        rs = pep8s.check_files(['tests/test_models/test_state.py'])
-        self.assertEqual(rs.total_errors, 0,
+        result = pep8s.check_files(['tests/test_models/test_state.py'])
+        self.assertEqual(result.total_errors, 0,
                          "Found code style errors (and warnings).")
 
     def test_state_module_docstring(self):
@@ -72,9 +72,9 @@ class TestState(unittest.TestCase):
         state = State()
         self.assertTrue(hasattr(state, "name"))
         if models.storage_t == 'db':
-            self.assertEqual(state.nm, None)
+            self.assertEqual(state.name, None)
         else:
-            self.assertEqual(state.nm, "")
+            self.assertEqual(state.name, "")
 
     def test_to_dict_creates_dict(self):
         """test to_dict method creates a dictionary with proper attrs"""

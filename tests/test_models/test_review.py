@@ -23,15 +23,15 @@ class TestReviewDocs(unittest.TestCase):
     def test_pep8_conformance_review(self):
         """Test that models/review.py conforms to PEP8."""
         pep8s = pep8.StyleGuide(quiet=True)
-        res = pep8s.check_files(['models/review.py'])
-        self.assertEqual(res.total_errors, 0,
+        result = pep8s.check_files(['models/review.py'])
+        self.assertEqual(result.total_errors, 0,
                          "Found code style errors (and warnings).")
 
     def test_pep8_conformance_test_review(self):
         """Test that tests/test_models/test_review.py conforms to PEP8."""
         pep8s = pep8.StyleGuide(quiet=True)
-        res = pep8s.check_files(['tests/test_models/test_review.py'])
-        self.assertEqual(res.total_errors, 0,
+        result = pep8s.check_files(['tests/test_models/test_review.py'])
+        self.assertEqual(result.total_errors, 0,
                          "Found code style errors (and warnings).")
 
     def test_review_module_docstring(self):
@@ -72,9 +72,9 @@ class TestReview(unittest.TestCase):
         review = Review()
         self.assertTrue(hasattr(review, "place_id"))
         if models.storage_t == 'db':
-            self.assertEqual(review.p_id, None)
+            self.assertEqual(review.place_id, None)
         else:
-            self.assertEqual(review.p_id, "")
+            self.assertEqual(review.place_id, "")
 
     def test_user_id_attr(self):
         """Test Review has attr user_id, and it's an empty string"""
@@ -87,12 +87,12 @@ class TestReview(unittest.TestCase):
 
     def test_text_attr(self):
         """Test Review has attr text, and it's an empty string"""
-        rev = Review()
-        self.assertTrue(hasattr(rev, "text"))
+        review = Review()
+        self.assertTrue(hasattr(review, "text"))
         if models.storage_t == 'db':
-            self.assertEqual(rev.txt, None)
+            self.assertEqual(review.text, None)
         else:
-            self.assertEqual(rev.txt, "")
+            self.assertEqual(review.text, "")
 
     def test_to_dict_creates_dict(self):
         """test to_dict method creates a dictionary with proper attrs"""
@@ -118,6 +118,6 @@ class TestReview(unittest.TestCase):
 
     def test_str(self):
         """test that the str method has the correct output"""
-        rv = Review()
-        sr = "[Review] ({}) {}".format(rv.id, rv.__dict__)
-        self.assertEqual(sr, str(rv))
+        review = Review()
+        string = "[Review] ({}) {}".format(review.id, review.__dict__)
+        self.assertEqual(string, str(review))

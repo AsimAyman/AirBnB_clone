@@ -23,8 +23,8 @@ class TestAmenityDocs(unittest.TestCase):
     def test_pep8_conformance_amenity(self):
         """Test that models/amenity.py conforms to PEP8."""
         pep8s = pep8.StyleGuide(quiet=True)
-        res = pep8s.check_files(['models/amenity.py'])
-        self.assertEqual(res.total_errors, 0,
+        result = pep8s.check_files(['models/amenity.py'])
+        self.assertEqual(result.total_errors, 0,
                          "Found code style errors (and warnings).")
 
     def test_pep8_conformance_test_amenity(self):
@@ -72,9 +72,9 @@ class TestAmenity(unittest.TestCase):
         amenity = Amenity()
         self.assertTrue(hasattr(amenity, "name"))
         if models.storage_t == 'db':
-            self.assertEqual(amenity.n, None)
+            self.assertEqual(amenity.name, None)
         else:
-            self.assertEqual(amenity.n, "")
+            self.assertEqual(amenity.name, "")
 
     def test_to_dict_creates_dict(self):
         """test to_dict method creates a dictionary with proper attrs"""
@@ -101,6 +101,6 @@ class TestAmenity(unittest.TestCase):
 
     def test_str(self):
         """test that the str method has the correct output"""
-        am = Amenity()
-        st = "[Amenity] ({}) {}".format(am.id, am.__dict__)
-        self.assertEqual(st, str(am))
+        amenity = Amenity()
+        string = "[Amenity] ({}) {}".format(amenity.id, amenity.__dict__)
+        self.assertEqual(string, str(amenity))
